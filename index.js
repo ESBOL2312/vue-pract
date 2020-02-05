@@ -1,0 +1,55 @@
+new Vue({
+    el:'#app',
+    data:{
+        viewUser:true,
+        fName:'',
+        lName:'',
+        mail:'',
+        phone:0,
+        guestListId:0,
+        users:[],
+        guestList:[],
+        guestInput:[],
+        gId:0,
+    },
+    methods:{
+        defVal(){
+            this.fName='',
+            this.lName='',
+            this.mail='',
+            this.phone=0,
+            this.guestInput=[]
+        },
+        addUser(){
+            this.guestListId++;
+            this.users.push({
+                Name:this.fName,
+                lastName:this.lName,
+                mail:this.mail,
+                phone:this.phone,
+                guestListId:this.guestListId
+            });
+            this.addGuest();
+            this.defVal();
+        },
+        addGuest(){
+            this.guestInput.forEach(element => {
+                this.guestList.push({
+                    id:this.guestListId,
+                    name:element.na
+                });
+            });
+        },
+        addGuestInput(){
+            this.guestInput.push({
+                id:'g-'+this.gId++,
+                na:'',
+            });
+        },
+        deleteG(aa){
+        
+            this.guestInput.splice(aa,1)
+           
+        }
+    },
+});
